@@ -1,3 +1,3 @@
-# review-text-generator
+# fake-review-generator
  :pencil2:
 

@@ -6,13 +6,13 @@
 
 We gonna use :hugs: [Hugging Face's Transformers](https://github.com/huggingface/transformers) for text generation.  
 Also, you first need to install one of, or both, TensorFlow 2.0 and PyTorch. Please refer to [TensorFlow installation page](https://www.tensorflow.org/install/pip#tensorflow-2.0-rc-is-available) and/or [PyTorch installation page](https://pytorch.org/get-started/locally/#start-locally) regarding the specific install command for your platform.  
-Below command is for **Mac**, so check the link above if you use Windows or other OS.
 
 ```
 pip install torch torchvision
 pip install tensorflow
 pip install transformer
 ```
+This command is for **Mac**, so check the link above if you use Windows or other OS.
 
 <br>
 
@@ -30,7 +30,9 @@ your current directory + /yelp_dataset/business.json
 your current directory + /yelp_dataset/review.json
 ```
 
-**preprocess.py** file extracts only restaurant reviews and divides reviews into positive / neutral / negative reviews. Postivie reviews are 5, 4 star-ratings and Negative reviews are under 2 star-ratings. After preprocessing, output file will be located in this directory.
+**preprocess.py** file extracts only restaurant reviews and divides reviews into positive / neutral / negative reviews.  
+Postivie reviews are 5, 4 star-ratings and Negative reviews are under 2 star-ratings.  
+After preprocessing, output file will be located in this directory.
 
 ```
 your current directory + /yelp_dataset/preprocess/
@@ -40,8 +42,8 @@ your current directory + /yelp_dataset/preprocess/
 
 ### 3. Fine Tuning GPT-2
 
-I modify some code of Hugging Face's [`run_lm_finetuning.py`](https://github.com/huggingface/transformers/blob/master/examples/run_lm_finetuning.py).  You can fine-tuning GPT-2 based on positive reviews like this.  It takes many hours depends on your computer.  
-To train faster, change args ```--per_gpu_train_batch_size``` (default is 1).
+I modify some code of Hugging Face's [`run_lm_finetuning.py`](https://github.com/huggingface/transformers/blob/master/examples/run_lm_finetuning.py).  
+You can fine-tune GPT-2 based on positive reviews like this.  
 
 ```
 python gpt2_fine_tuning.py \
@@ -60,6 +62,8 @@ python gpt2_fine_tuning.py \
     --do_train \
     --train_data_file='./yelp_dataset/preprocess/neg.txt'
 ```
+It takes many hours depends on your computing power.  
+To train faster, add args ```--per_gpu_train_batch_size``` (default is 1).  
 
 <br>
 
@@ -85,12 +89,13 @@ python run_generation.py \
     --seed=42
 ```
 
-To generate different reviews, change args ``--seed`` and `` --length``.
-
+To generate different reviews, change args ``--seed`` and `` --length``.  
+  
 <br>
 
-### 5. Check the Output
+### 5. Check the Fake Reviews
 
+Let's see the fake reviews we made.  
 For the input 'Price was' and 'Food was', I got positive fake reviews like this
 
 ```
@@ -108,6 +113,12 @@ Food was good, but the food in the kitchen was pretty bland. The duck dumplings 
 ```
 
 As I mentioned above, change args ``--seed`` and `` --length`` for different reviews.
+
+<br>
+<br>
+
+If there are any errors or problems, please let me know.  
+
 <br>
 
 ### Reference

@@ -18,25 +18,30 @@ This command is for **Mac**, so check the link above if you use Windows or other
 
 ### 1. Download Dataset
 
-You can download Yelp Dataset in [this link](https://www.yelp.com/dataset/challenge) after you agree to the Dataset License. We gonna use **business.json** and **review.json** file for text generation. Just unzip dataset file in the same directory with this repo.  
+You can download Yelp Dataset in [this link](https://www.yelp.com/dataset/challenge) after you agree to the Dataset License.  
+We gonna use **business.json** and **review.json** file for text generation.  
+Just unzip dataset file in the same directory with this repo.  
 <br>
 
 ### 2. Preprocess
 
-The file location be like bleow, if you just unzip dataset file in the repo. If you want to change directory,  change some directory in **preprocess.py**.
+[`preprocess.py`](https://github.com/jungwhank/fake-review-generator/blob/master/preprocess.py) extracts only restaurant reviews and divides reviews into positive / neutral / negative reviews.  
+The dataset's location will be like below, if you just unzip dataset file in the repo.  
+If you want to change directory, change **`PATH`** in
+[`preprocess.py`](https://github.com/jungwhank/fake-review-generator/blob/master/preprocess.py)
 
 ```
 your current directory + /yelp_dataset/business.json
 your current directory + /yelp_dataset/review.json
 ```
 
-**preprocess.py** file extracts only restaurant reviews and divides reviews into positive / neutral / negative reviews.  
-Postivie reviews are 5, 4 star-ratings and Negative reviews are under 2 star-ratings.  
-After preprocessing, output file will be located in this directory.
+After preprocessing, output file will be located in the below directory.
 
 ```
 your current directory + /yelp_dataset/preprocess/
 ```
+Because of computing power, I limited the maximum number of reviews to 500,000.  
+If you want more or less reviews, change the variable **`MAX_REVIEW_NUM`** in the [`preprocess.py`](https://github.com/jungwhank/fake-review-generator/blob/master/preprocess.py).
 
 <br>
 

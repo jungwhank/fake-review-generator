@@ -69,9 +69,9 @@ def preprocess(business_df, review_df):
     # merge review and restaurant
     df = business_df.merge(review_df, on='business_id')
     
-    positive = df[df['stars'] == 5].text
+    positive = df[df['stars'] > 3].text
     neutral = df[df['stars'] == 3].text
-    negative = df[df['stars'] == 1].text
+    negative = df[df['stars'] < 3].text
 
     # write to txt
     positive[:MAX_REVIEW_NUM].to_csv(OUT_FPATH + 'positive.txt', encoding='utf-8', header=None, index=None, sep=' ')

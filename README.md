@@ -18,7 +18,7 @@ This command is for **Mac**, so check the link above if you use Windows or other
 
 ### 1. Download Dataset
 
-You can download Yelp Dataset in [this link](https://www.yelp.com/dataset/challenge) after you agree to the Dataset License.  
+You can download Yelp Dataset in [this link](https://www.yelp.com/dataset) after you agree to the Dataset License.  
 We gonna use **business.json** and **review.json** file for text generation.  
 Just unzip dataset file in the same directory with this repo.  
 <br>

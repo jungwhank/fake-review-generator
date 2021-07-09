@@ -79,7 +79,7 @@ I modify some code of Hugging Face's [`run_generation.py`](https://github.com/hu
 You can generate positive reviews like this.  
 
 ```
-python run_generation.py \
+python gpt2_generation.py \
     --model_name_or_path=positive \
     --length=100 \
     --seed=42
@@ -88,7 +88,7 @@ python run_generation.py \
 For negative reviews, like below.
 
 ```
-python run_generation.py \
+python gpt2_generation.py \
     --model_name_or_path=negative \
     --length=100 \
     --seed=42

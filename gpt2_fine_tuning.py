@@ -42,8 +42,10 @@ from transformers import (
     GPT2LMHeadModel,
     GPT2Tokenizer,
     get_linear_schedule_with_warmup,
+    PreTrainedModel
 )
 
+from transformers.tokenization_utils import PreTrainedTokenizer
 
 try:
     from torch.utils.tensorboard import SummaryWriter
@@ -61,7 +63,7 @@ class TextDataset(Dataset):
     def __init__(self, tokenizer: PreTrainedTokenizer, args, file_path: str, block_size=512):
         assert os.path.isfile(file_path)
 
-        block_size = block_size - (tokenizer.max_len - tokenizer.max_len_single_sentence)
+        block_size = block_size - (tokenizer.model_max_length - tokenizer.max_len_single_sentence)
 
         directory, filename = os.path.split(file_path)
         cached_features_file = os.path.join(
@@ -571,6 +573,8 @@ def main():
     )
     parser.add_argument("--seed", type=int, default=42, help="random seed for initialization")
 
+    parser.add_argument("--mlm", action='store_true', help="The LM step: MLM or CLM. If `mlm` is True, the MLM is used over CLM.")
+
     parser.add_argument(
         "--fp16",
         action="store_true",
@@ -674,10 +678,10 @@ def main():
         )
 
     if args.block_size <= 0:
-        args.block_size = tokenizer.max_len
+        args.block_size = tokenizer.model_max_length
         # Our input block size will be the max possible for the model
     else:
-        args.block_size = min(args.block_size, tokenizer.max_len)
+        args.block_size = min(args.block_size, tokenizer.model_max_length)
 
     if args.model_name_or_path:
         model = model_class.from_pretrained(

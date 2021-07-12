@@ -8,9 +8,9 @@ We gonna use :hugs: [Hugging Face's Transformers](https://github.com/huggingface
 Also, you first need to install one of, or both, TensorFlow 2.0 and PyTorch. Please refer to [TensorFlow installation page](https://www.tensorflow.org/install/pip#tensorflow-2.0-rc-is-available) and/or [PyTorch installation page](https://pytorch.org/get-started/locally/#start-locally) regarding the specific install command for your platform.  
 
 ```
-pip install torch torchvision
+pip install torch
 pip install tensorflow
-pip install transformer
+pip install transformers
 ```
 This command is for **Mac**, so check the link above if you use Windows or other OS.
 

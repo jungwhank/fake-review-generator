@@ -22,7 +22,7 @@ MAX_REVIEW_NUM = 500000
 
 def preprocess_business():
     print('preprocessing business file.')
-    business_path = PATH + 'business.json'
+    business_path = PATH + 'yelp_academic_dataset_business.json'
     df = pd.read_json(business_path, lines=True)
 
     # only keep necessary columns
@@ -43,7 +43,7 @@ def preprocess_business():
 
 def preprocess_review():
     print('preprocessing review file. It can take more than a few minutes.')
-    review_path = PATH + 'review.json'
+    review_path = PATH + 'yelp_academic_dataset_review.json'
     df = pd.read_json(review_path, lines=True)
 
     # only keep necessary columns

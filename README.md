@@ -55,7 +55,7 @@ python gpt2_fine_tuning.py \
     --output_dir=positive \
     --model_name_or_path=gpt2 \
     --do_train \
-    --train_data_file='./yelp_dataset/preprocess/pos.txt'
+    --train_data_file='./yelp_dataset/preprocess/positive.txt'
 ```
 
 For negative reviews, like below.
@@ -65,7 +65,7 @@ python gpt2_fine_tuning.py \
     --output_dir=negative \
     --model_name_or_path=gpt2 \
     --do_train \
-    --train_data_file='./yelp_dataset/preprocess/neg.txt'
+    --train_data_file='./yelp_dataset/preprocess/negative.txt'
 ```
 It takes many hours depends on your computing power.  
 To train faster, add args ```--per_gpu_train_batch_size``` (default is 1).  
